@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador - Sabor Llanero</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">👑 Sabor Llanero - Panel de Administrador</span>
+            <div class="d-flex align-items-center">
+                <span class="badge bg-light text-dark fs-6 me-3" id="sesion-admin"></span>
+                <button class="btn btn-outline-danger btn-sm" id="btn-logout">Cerrar Sesión</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Navegación de secciones (funciona sin el JS de Bootstrap) -->
+    <ul class="nav nav-pills nav-fill mx-auto mt-3 admin-nav" id="nav-admin">
+        <li class="nav-item">
+            <button class="nav-link active" data-seccion="mesero">🍽️ Mesero</button>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link" data-seccion="cocina">🔥 Cocina</button>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link" data-seccion="caja">💰 Caja</button>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link" data-seccion="empleados">👥 Empleados</button>
+        </li>
+    </ul>
+
+    <div class="container-fluid mt-4">
+
+        <!-- ==================== SECCIÓN MESERO ==================== -->
+        <section id="sec-mesero" class="seccion-admin">
+            <div class="row">
+
+                <!-- COLUMNA 1: SELECCIÓN DE MESA -->
+                <div class="col-md-3 mb-3">
+                    <div class="card shadow-sm border-primary">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0 font-weight-bold">1. Seleccionar Mesa</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex flex-wrap gap-2" id="mesas-admin">
+                                <button type="button" class="btn btn-outline-primary" data-mesa="Mesa 1">Mesa 1</button>
+                                <button type="button" class="btn btn-outline-primary" data-mesa="Mesa 2">Mesa 2</button>
+                                <button type="button" class="btn btn-outline-primary" data-mesa="Mesa 3">Mesa 3</button>
+                                <button type="button" class="btn btn-outline-primary" data-mesa="Mesa 4">Mesa 4</button>
+                            </div>
+                            <p class="text-muted small mt-3 mb-0">Mesa seleccionada: <strong id="mesa-actual">Ninguna</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLUMNA 2: MENÚ -->
+                <div class="col-md-6 mb-3">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0 font-weight-bold">2. Agregar Productos</h5>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="text-success font-weight-bold">Platos Fuertes</h6>
+                            <div class="row mb-3" id="platos-admin">
+                                <div class="col-6 mb-2">
+                                    <button type="button" class="btn btn-light w-100 border text-start p-3 hover-shadow btn-producto" data-nombre="Carne a la Llanera" data-precio="35000">
+                                        <strong class="d-block">Carne a la Llanera</strong>
+                                        <span class="text-success font-weight-bold">$35.000</span>
+                                    </button>
+                                </div>
+                                <div class="col-6 mb-2">
+                                    <button type="button" class="btn btn-light w-100 border text-start p-3 hover-shadow btn-producto" data-nombre="Sancocho de Gallina" data-precio="25000">
+                                        <strong class="d-block">Sancocho de Gallina</strong>
+                                        <span class="text-success font-weight-bold">$25.000</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <h6 class="text-success font-weight-bold">Bebidas</h6>
+                            <div class="row" id="bebidas-admin">
+                                <div class="col-6 mb-2">
+                                    <button type="button" class="btn btn-light w-100 border text-start p-3 hover-shadow btn-producto" data-nombre="Limonada Natural" data-precio="6000">
+                                        <strong class="d-block">Limonada Natural</strong>
+                                        <span class="text-success font-weight-bold">$6.000</span>
+                                    </button>
+                                </div>
+                                <div class="col-6 mb-2">
+                                    <button type="button" class="btn btn-light w-100 border text-start p-3 hover-shadow btn-producto" data-nombre="Cerveza Nacional" data-precio="7000">
+                                        <strong class="d-block">Cerveza Nacional</strong>
+                                        <span class="text-success font-weight-bold">$7.000</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLUMNA 3: RESUMEN -->
+                <div class="col-md-3 mb-3">
+                    <div class="card shadow-sm border-warning">
+                        <div class="card-header bg-warning text-dark">
+                            <h5 class="mb-0 font-weight-bold">3. Pedido Actual</h5>
+                        </div>
+                        <div class="card-body p-0">
+                            <ul class="list-group list-group-flush" id="lista-pedido">
+                                <li class="list-group-item text-center p-4 text-muted">
+                                    <small>Selecciona una mesa y agrega productos para comenzar.</small>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-footer bg-white">
+                            <div class="d-flex justify-content-between align-items-center mb-3 mt-2">
+                                <h5 class="mb-0">Total:</h5>
+                                <h4 class="mb-0 text-success font-weight-bold" id="total-pedido">$0</h4>
+                            </div>
+                            <button class="btn btn-warning w-100 font-weight-bold btn-lg" id="btn-enviar-cocina">
+                                Enviar a Cocina
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==================== SECCIÓN COCINA ==================== -->
+        <section id="sec-cocina" class="seccion-admin d-none">
+            <h3 class="mb-4 text-danger font-weight-bold">🔥 Pedidos Pendientes</h3>
+            <div class="row" id="tablero-cocina">
+                <h5 class="text-muted w-100 text-center mt-5">Cargando pedidos...</h5>
+            </div>
+        </section>
+
+        <!-- ==================== SECCIÓN CAJA ==================== -->
+        <section id="sec-caja" class="seccion-admin d-none">
+            <h3 class="mb-4 text-success font-weight-bold">💰 Mesas Listas para Cobrar</h3>
+            <div class="row" id="tablero-caja">
+                <h5 class="text-muted w-100 text-center mt-5">Cargando mesas...</h5>
+            </div>
+        </section>
+
+        <!-- ==================== SECCIÓN EMPLEADOS ==================== -->
+        <section id="sec-empleados" class="seccion-admin d-none">
+            <div class="row">
+
+                <!-- FORMULARIO ALTA / EDICIÓN -->
+                <div class="col-md-4 mb-3">
+                    <div class="card shadow-sm border-dark">
+                        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0 font-weight-bold" id="titulo-form-empleado">➕ Añadir Empleado</h5>
+                            <button class="btn btn-outline-light btn-sm d-none" id="btn-cancelar-edicion">Cancelar</button>
+                        </div>
+                        <div class="card-body">
+                            <form id="form-empleado">
+                                <div class="mb-3">
+                                    <label class="form-label font-weight-bold">Usuario</label>
+                                    <input type="text" id="input-empleado-usuario" class="form-control" required placeholder="Ej: juan" autocomplete="off">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label font-weight-bold">Contraseña</label>
+                                    <input type="text" id="input-empleado-password" class="form-control" required placeholder="Mínimo 4 caracteres" autocomplete="off">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label font-weight-bold">Rol</label>
+                                    <select id="select-empleado-rol" class="form-control">
+                                        <option value="mesero">Mesero</option>
+                                        <option value="cocina">Cocina</option>
+                                        <option value="cajero">Cajero</option>
+                                        <option value="admin">Administrador</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-dark w-100 font-weight-bold" id="btn-guardar-empleado">Guardar Empleado</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LISTADO -->
+                <div class="col-md-8 mb-3">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-dark text-white">
+                            <h5 class="mb-0 font-weight-bold">👥 Empleados Registrados</h5>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-hover mb-0 align-middle">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th class="pl-3">#</th>
+                                            <th>Usuario</th>
+                                            <th>Contraseña</th>
+                                            <th>Rol</th>
+                                            <th class="text-right pr-3">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="lista-empleados">
+                                        <tr><td colspan="5" class="text-center text-muted p-4">Cargando empleados...</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <script type="module" src="../js/admin.js"></script>
+</body>
+</html>

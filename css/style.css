@@ -1,0 +1,15 @@
+.login-body { height: 100vh; }
+.login-card { width: 100%; max-width: 400px; }
+.hover-shadow:hover { box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important; }
+
+/* --- Compatibilidad con las clases de Bootstrap 5 usadas en el HTML --- */
+.fw-bold, .fw-semibold { font-weight: 700; }
+.fw-light { font-weight: 300; }
+.gap-2 { gap: .5rem; }
+.gap-3 { gap: 1rem; }
+.fs-5 { font-size: 1.25rem; }
+.fs-6 { font-size: 1rem; }
+
+/* --- Navegación del panel de administrador --- */
+.admin-nav { max-width: 900px; width: 100%; }
+.admin-nav .nav-link { cursor: pointer; font-weight: 700; background-color: transparent; border: 0; }

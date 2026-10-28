@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sabor Llanero</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-dark d-flex align-items-center justify-content-center login-body">
+
+    <div class="card shadow-lg p-4 login-card">
+        <div class="text-center mb-4">
+            <h2 class="text-primary fw-bold">🥩 Sabor Llanero</h2>
+            <p class="text-muted">Ingreso al Sistema</p>
+        </div>
+
+        <form id="form-login">
+            <div class="mb-3">
+                <label class="form-label fw-bold">Usuario</label>
+                <input type="text" id="input-usuario" class="form-control" required placeholder="Ej: admin">
+            </div>
+            <div class="mb-4">
+                <label class="form-label fw-bold">Contraseña</label>
+                <input type="password" id="input-password" class="form-control" required placeholder="****">
+            </div>
+            <button type="submit" id="btn-login" class="btn btn-primary w-100 fw-bold btn-lg">Ingresar</button>
+        </form>
+    </div>
+
+    <script type="module" src="js/login.js"></script>
+</body>
+</html>

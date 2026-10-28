@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesero - Sabor Llanero</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">🥩 Sabor Llanero - Panel de Mesero</span>
+            <button class="btn btn-outline-danger btn-sm" id="btn-logout">Cerrar Sesión</button>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        <div class="row">
+
+            <!-- COLUMNA 1: SELECCIÓN DE MESA -->
+            <div class="col-md-3 mb-3">
+                <div class="card shadow-sm border-primary">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">1. Seleccionar Mesa</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2">
+                            <input type="radio" class="btn-check" name="mesas" id="mesa1" autocomplete="off">
+                            <label class="btn btn-outline-primary fs-5" for="mesa1">Mesa 1</label>
+
+                            <input type="radio" class="btn-check" name="mesas" id="mesa2" autocomplete="off">
+                            <label class="btn btn-outline-primary fs-5" for="mesa2">Mesa 2</label>
+
+                            <input type="radio" class="btn-check" name="mesas" id="mesa3" autocomplete="off">
+                            <label class="btn btn-outline-primary fs-5" for="mesa3">Mesa 3</label>
+
+                            <input type="radio" class="btn-check" name="mesas" id="mesa4" autocomplete="off">
+                            <label class="btn btn-outline-primary fs-5" for="mesa4">Mesa 4</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLUMNA 2: MENÚ Y CATEGORÍAS -->
+            <div class="col-md-6 mb-3">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">2. Agregar Productos</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="nav nav-tabs mb-3" id="menuTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active text-success" data-bs-toggle="tab" data-bs-target="#platos" type="button" role="tab">Platos Fuertes</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link text-success" data-bs-toggle="tab" data-bs-target="#bebidas" type="button" role="tab">Bebidas</button>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="platos" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-6 mb-2">
+                                        <button type="button" class="btn btn-light w-100 border text-start p-3 hover-shadow">
+                                            <strong class="d-block">Carne a la Llanera</strong>
+                                            <span class="text-success fw-bold">$35.000</span>
+                                        </button>
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <button type="button" class="btn btn-light w-100 border text-start p-3 hover-shadow">
+                                            <strong class="d-block">Sancocho de Gallina</strong>
+                                            <span class="text-success fw-bold">$25.000</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="bebidas" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-6 mb-2">
+                                        <button type="button" class="btn btn-light w-100 border text-start p-3 hover-shadow">
+                                            <strong class="d-block">Limonada Natural</strong>
+                                            <span class="text-success fw-bold">$6.000</span>
+                                        </button>
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <button type="button" class="btn btn-light w-100 border text-start p-3 hover-shadow">
+                                            <strong class="d-block">Cerveza Nacional</strong>
+                                            <span class="text-success fw-bold">$7.000</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLUMNA 3: RESUMEN DEL PEDIDO -->
+            <div class="col-md-3 mb-3">
+                <div class="card shadow-sm border-warning">
+                    <div class="card-header bg-warning text-dark">
+                        <h5 class="mb-0">3. Pedido Actual</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush" id="lista-pedido">
+                            <li class="list-group-item text-center p-4 text-muted">
+                                <small>Selecciona una mesa y agrega productos para comenzar.</small>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer bg-white">
+                        <div class="d-flex justify-content-between align-items-center mb-3 mt-2">
+                            <h5 class="mb-0">Total:</h5>
+                            <h4 class="mb-0 text-success fw-bold" id="total-pedido">$0</h4>
+                        </div>
+                        <button class="btn btn-warning w-100 fw-bold btn-lg" id="btn-enviar-cocina">
+                            Enviar a Cocina
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="../js/mesero.js"></script>
+</body>
+</html>
